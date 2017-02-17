@@ -9,6 +9,7 @@ public class main
 		int dimension = Integer.parseInt(args[3]);
 		if (dimension == 0){
 			dimension0 d0 = new dimension0(flag, numpoints, numtrials);
+			d0.populate(numpoints);
 		}
 	}
 }
