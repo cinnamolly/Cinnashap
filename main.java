@@ -11,5 +11,9 @@ public class main
 			dimension0 d0 = new dimension0(flag, numpoints, numtrials);
 			d0.populate(numpoints);
 		}
+		else{
+			dimensionOther dOther = new dimensionOther(flag, numpoints, numtrials, dimension);
+			dOther.populate(numpoints, dimension);
+		}
 	}
 }
