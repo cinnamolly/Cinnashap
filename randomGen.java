@@ -3,10 +3,11 @@ import java.util.*;
 public class randomGen
 {
 	private double rNum;
-	private static Random rand = new Random(System.currentTimeMillis());
+	private Random rand;
 	public randomGen()
 	{
 		rNum = -1; 
+		rand = new Random(System.currentTimeMillis());
 	}
 
 	public double random()
