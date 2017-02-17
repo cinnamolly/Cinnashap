@@ -1,7 +1,6 @@
 import java.util.*;
 
 public class LinkedList{
-	// HI
 	private Node head;
 
 	public LinkedList(){
