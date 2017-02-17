@@ -4,7 +4,7 @@ public class LinkedList{
 	private Node head;
 
 	public LinkedList(){
-
+		head = null;
 	}
 
 	public void add(int vertex, double weight){
@@ -14,6 +14,7 @@ public class LinkedList{
 		else{
 			Node newNode = new Node(vertex, weight);
 			newNode.setNext(head);
+			head = newNode;
 		}
 
 	}
@@ -22,14 +23,11 @@ public class LinkedList{
 		if(index < 0){
 			return null;
 		}
-		Node currNode = null;
-		if(head!=null){
-			currNode = head.getNext();
-			for (int x = 0; x<index;x++){
-				if(currNode.getNext() == null)
-					return null;
-				currNode = currNode.getNext();
-			}
+		Node currNode = head;
+		for (int x = 0; x<index;x++){
+			if(currNode == null)
+				return null;
+			currNode = currNode.getNext();
 		}
 		return currNode;
 	}

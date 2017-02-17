@@ -20,15 +20,18 @@ public class dimension0
 			LinkedList l = new LinkedList();
 			l.add(y, 0);
 			vertexList[y] = l;
-			System.out.println(l.toString());
 		}
 		for(int x = 0; x<numpoints; x++){
 			LinkedList indexList = vertexList[x];
 			for(int y=1; y<numpoints;y++){
-				r = random.random();
-				indexList.add(y, r);
-				LinkedList otherList = vertexList[y];
-				otherList.add(x, r);
+				if(x<y){
+					r = random.random();
+					System.out.println(r);
+					indexList.add(y, r);
+					LinkedList otherList = vertexList[y];
+					otherList.add(x, r);
+				}
+				
 			}
 		}
 
@@ -36,10 +39,6 @@ public class dimension0
 			System.out.println(x);
 			LinkedList l = vertexList[x];
 			System.out.println(l.toString());
-			/*for(int y = 0; y<numpoints-1;y++){
-				Node z = l.get(y);
-				//System.out.print("Vertex: " + z.getVertexName() + ", Weight: " + z.getWeight());
-			}*/
 		}
 		return vertexList;
 	}
