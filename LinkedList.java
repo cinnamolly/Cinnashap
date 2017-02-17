@@ -11,16 +11,11 @@ public class LinkedList{
 		if(head == null){
 			head = new Node(nextNode, weight);
 		}
-
-		Node newNode = new Node(nextNode, weight);
-		Node currNode = head;
-
-		if(currNode != null){
-			while(currNode.getNext() != null){
-				currNode = currNode.getNext();
-			}
-			currNode.setNext(newNode);
+		else{
+			Node newNode = new Node(nextNode, weight);
+			newNode.setNext(head);
 		}
+
 	}
 
 	public Object get(int index){
@@ -43,17 +38,17 @@ public class LinkedList{
 
 private class Node{
 	Node next;
-	int nextNodeNum;
+	int vertexName;
 	double weight;
 
-	public Node(int nextNode, double weight){
+	public Node(int vertex, double weight){
 		next = null;
-		this.nextNodeNum = nextNode;
+		this.vertexName = vertex;
 		this.weight = weight;
 	}
 
-	public int getNextNodeNum(){
-		return nextNodeNum;
+	public int getVertexName(){
+		return vertexName;
 	}
 
 	public double getWeight(){
@@ -64,8 +59,8 @@ private class Node{
 		return next;
 	}
 
-	public void setNextNodeNum(int newNum){
-		nextNodeNum = newNum;
+	public void setVertexName(int newName){
+		vertexName = newName;
 	}
 
 	public void setWeight(double newWeight){
