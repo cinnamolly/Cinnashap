@@ -10,6 +10,7 @@ public class main
 		if (dimension == 0){
 			dimension0 d0 = new dimension0(flag, numpoints, numtrials);
 			d0.populate(numpoints);
+			System.out.println(d0.prims());
 		}
 		else{
 			dimensionOther dOther = new dimensionOther(flag, numpoints, numtrials, dimension);
