@@ -63,7 +63,7 @@ public class dimension0
 			prev[i] = -1;
 		}
 
-		dist[0] = 0;
+		dist[numpoints - 1] = 0;
 
 		while (!min.isEmpty()) {
 			v = min.remove();
@@ -82,7 +82,6 @@ public class dimension0
 
 		}
 
-	//now find the last vertex added to the set and follow its prev pointers to the start, adding up the distances from the dist array to get the weight of the MST?
 		double mst_sum = 0;
 		for(int i = 0; i < numpoints; i++) {
 			mst_sum += dist[i];
