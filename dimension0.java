@@ -28,7 +28,7 @@ public class dimension0
 			for(int y=1; y<numpoints;y++){
 				if(x<y){
 					r = random.random();
-					System.out.println(r);
+					//System.out.println(r);
 					indexList.add(y, r);
 					LinkedList otherList = vertexList[y];
 					otherList.add(x, r);
@@ -37,11 +37,11 @@ public class dimension0
 			}
 		}
 
-		for(int x = 0; x<numpoints; x++){
-			System.out.println(x);
+	/*	for(int x = 0; x<numpoints; x++){
+			//System.out.println(x);
 			LinkedList l = vertexList[x];
-			System.out.println(l.toString());
-		}
+			//System.out.println(l.toString());
+		}*/
 		this.vertexList = vertexList;
 		return vertexList;
 	}

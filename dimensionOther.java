@@ -25,7 +25,7 @@ public class dimensionOther
 			pointList.add(arrayToAdd);
 		}
 		for(int x = 0; x<numpoints; x++){
-			System.out.print(Arrays.toString(pointList.get(x))+",");
+			//System.out.print(Arrays.toString(pointList.get(x))+",");
 		}
 		this.pointList = pointList;
 		return pointList;
@@ -45,7 +45,7 @@ public class dimensionOther
 					double[] point1 = pointList.get(x);
 					double[] point2 = pointList.get(y);
 					double d = calcDist(point1, point2);
-					System.out.println(d);
+					//System.out.println(d);
 					indexList.add(y, d);
 					LinkedList otherList = vertexList[y];
 					otherList.add(x, d);
@@ -53,11 +53,11 @@ public class dimensionOther
 				
 			}
 		}
-		for(int x = 0; x<numpoints; x++){
+		/*for(int x = 0; x<numpoints; x++){
 			System.out.println(x);
 			LinkedList l = vertexList[x];
 			System.out.println(l.toString());
-		}
+		}*/
 		this.vertexList = vertexList;
 		return vertexList;
 	}
