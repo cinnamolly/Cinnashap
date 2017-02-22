@@ -45,11 +45,15 @@ public class Prims
 
 		}
 
+		double max_weight = 0;
 		double mst_sum = 0;
 		for(int i = 0; i < numpoints; i++) {
 			mst_sum += dist[i];
+			if (dist[i] > max_weight)
+				max_weight = dist[i];
 		}
 
+		System.out.println("Largest edge: " + max_weight);
 		return mst_sum;
 	}
 }
