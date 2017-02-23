@@ -28,13 +28,30 @@ public class main
 			}
 			System.out.println(result + " " + numpoints + " " + numtrials + " " + dimension);
 		}
-		//Test Case 1
-		/*else if(flag == 1){
+		else if(flag == 1){
 			Prims p1 = new Prims(3, 0);
-			double result1 = p1.doPrim();
+			double result1 = p1.doPrims();
+			List<Double> storedWeights = p1.getStoredWeights();
+			double min1 = Integer.MAX_VALUE;
+			double min2 = Integer.MAX_VALUE;
+			for(int x = 0; x<storedWeights.size(); x++){
+				double curr = storedWeights.get(x);
+				if (curr<min1 && curr < min2){
+					min1 = curr;
+				}
+				else if (curr > min1 && curr < min2)
+				{
+					min2 = curr;
+				}
+			}
+			if ((min1 + min2) == result1){
+				System.out.println("true");
+			}
+			else{
+				System.out.println("false");
+			}
 
-
-		}
+		}/*
 		else if (flag == 2){
 			ArrayList<Double> values = new ArrayList<Double>();
 			values.add(.9);
