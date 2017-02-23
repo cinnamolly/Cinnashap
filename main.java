@@ -28,10 +28,9 @@ public class main
 			}
 			System.out.println(result + " " + numpoints + " " + numtrials + " " + dimension);
 		}
-		else if(flag == 1){
+		/*else if(flag == 1){
 			Prims p1 = new Prims(3, 0);
 			double result1 = p1.doPrims();
-			List<Double> storedWeights = p1.getStoredWeights();
 			double min1 = Integer.MAX_VALUE;
 			double min2 = Integer.MAX_VALUE;
 			for(int x = 0; x<storedWeights.size(); x++){

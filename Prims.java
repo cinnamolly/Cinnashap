@@ -7,7 +7,7 @@ public class Prims
 	double r = 0;
 	double[] dist;
 	int[] set;
-	List<Double> storedWeights;
+	//List<Double> storedWeights;
 
 	double[] x, y, z, w;
 
@@ -56,7 +56,7 @@ public class Prims
 		//put vertex 0 in the arrays
 		dist[0] = 0;
 		set[0] = 1;
-		storedWeights = new ArrayList<Double>();
+		//storedWeights = new ArrayList<Double>();
 		//iterate through distance list, generate new distances, compare
 		//v is current vertex and w is closest node to MST so far
 		int v = 0;
@@ -66,12 +66,12 @@ public class Prims
 				if((v != i) && (set[i] != 1)){
 					if(dimension == 0) {
 						r = random.random();
-						storedWeights.add(r);
+						//storedWeights.add(r);
 						//System.out.println("random edge: " + r);
 					}
 					else {
 						r = calcDist(v, i, dimension);
-						storedWeights.add(r);
+						//storedWeights.add(r);
 						//System.out.println("distance: " + r);
 					}
 		
@@ -117,11 +117,6 @@ public class Prims
 		}
 		
 		return Math.sqrt(sum);
-	}
-
-	public List<Double> getStoredWeights()
-	{
-		return storedWeights;
 	}
 
 }
