@@ -7,7 +7,6 @@ public class main
 		int numpoints = Integer.parseInt(args[1]);
 		int numtrials = Integer.parseInt(args[2]);
 		int dimension = Integer.parseInt(args[3]);
-		double[] mstTrials = new double[numtrials];
 		double sum = 0;
 		double result = 0;
 		double tempResult = 0;
@@ -21,7 +20,7 @@ public class main
 				{
 					Prims p = new Prims(numpoints, dimension);
 					tempResult = p.doPrims();
-					//System.out.println(tempResult);
+					System.out.println(tempResult);
 					sum += tempResult;
 				}
 				result = sum/numtrials;
