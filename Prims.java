@@ -2,58 +2,118 @@ import java.util.*;
 
 public class Prims
 {
-	private int numpoints;
-	private LinkedList[] vertexList;
-	public Prims(int numpoints, LinkedList[] vertexList)
+	private int numpoints, dimension;
+	private randomGen random;
+	double r = 0;
+	double[] dist;
+	int[] set;
+
+	double[] x, y, z, w;
+
+	public Prims(int numpoints, int dimension)
 	{
 		this.numpoints = numpoints;
-		this.vertexList = vertexList;
-	}
-	public double doPrims() {
-		double[] dist = new double[numpoints];
-		int[] prev = new int[numpoints];
-		Node v = new Node(-1, -1);
-		Node w = new Node(-1, -1);
-		int[] set = new int[numpoints];
-		MinHeap min = new MinHeap(numpoints*(numpoints - 1)/2);
-		LinkedList[] g = this.vertexList;
-		
+		this.dimension = dimension;
 
-		min.add(g[0].get(0));
+		random = new randomGen();
 
+		dist = new double[numpoints];
+		set = new int[numpoints];
+		x = new double[numpoints];
+		y = new double[numpoints];
+		z = new double[numpoints];
+		w = new double[numpoints];
+
+		// fill dist_list with MAX_INT
 		for (int i = 0; i < numpoints; i++) {
 			dist[i] = Integer.MAX_VALUE;
-			prev[i] = -1;
 		}
 
-		dist[numpoints - 1] = 0;
+		//if dimension 2 or 3 or 4 - fill point arrays
+		if (dimension != 0){
+			for (int i = 0; i<numpoints; i++){
+				x[i] = random.random();
+				y[i] = random.random();
+			}
+			//if dimension 3 or 4
+			if (dimension != 2){
+				for (int i = 0; i<numpoints; i++){
+					z[i] = random.random();
+				}
+				//if just dimension 4
+				if (dimension == 4) {
+					for (int i = 0; i<numpoints; i++){
+						w[i] = random.random();
+					}
+				}
+				
+			}
+		}
+	}
 
-		while (!min.isEmpty()) {
-			v = min.remove();
-			set[v.vertexName] = 1;
-			for (int i = 0; i < numpoints; i++) {
-				w = g[v.vertexName].get(i); 
-				if (set[w.vertexName] != 1) {
-					if (dist[w.vertexName] > w.weight) {
-						dist[w.vertexName] = w.weight;
-						prev[w.vertexName] = v.vertexName;
-						
-						min.add(w);
+	public double doPrims(){
+		//put vertex 0 in the arrays
+		dist[0] = 0;
+		set[0] = 1;
+
+		//iterate through distance list, generate new distances, compare
+		//v is current vertex and w is closest node to MST so far
+		int v = 0;
+		int w = 1;
+		for(int j = 0; j < numpoints - 1; j++){
+			for(int i = 1; i < numpoints; i++) {
+				if((v != i) && (set[i] != 1)){
+					if(dimension == 0) {
+						r = random.random();
+						//System.out.println("random edge: " + r);
+					}
+					else {
+						r = calcDist(v, i, dimension);
+						//System.out.println("distance: " + r);
+					}
+		
+					if(r < dist[i]) {
+						dist[i] = r;
+					}
+					if (dist[i] < dist[w]) {
+						w = i;
 					}
 				}
 			}
-
+			set[w] = 1;
+			v = w;
 		}
 
 		double max_weight = 0;
 		double mst_sum = 0;
 		for(int i = 0; i < numpoints; i++) {
 			mst_sum += dist[i];
-			if (dist[i] > max_weight)
+
+			//System.out.println("edge weight: " + dist[i]);
+			
+			if (dist[i] > max_weight) {
 				max_weight = dist[i];
+			}
 		}
 
-		System.out.println("Largest edge: " + max_weight);
+		//System.out.println("Largest edge: " + max_weight);
+		//System.out.println(mst_sum);
 		return mst_sum;
+
 	}
+
+	public double calcDist(int vIndex, int currIndex, int dimension){
+		double sum = Math.pow((x[vIndex] - x[currIndex]),2) + Math.pow((y[vIndex] - y[currIndex]),2);
+		
+		if (dimension != 2) {
+			sum += Math.pow((z[vIndex] - z[currIndex]),2);
+
+			if (dimension == 4) {
+				sum += Math.pow((w[vIndex] - w[currIndex]),2);	
+			}	
+		}
+		
+		return Math.sqrt(sum);
+	}
+
 }

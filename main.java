@@ -10,51 +10,29 @@ public class main
 		double[] mstTrials = new double[numtrials];
 		double sum = 0;
 		double result = 0;
+		double tempResult = 0;
 		if(flag ==0){
 			if(numpoints == 1){
 				result = 0;
 			}
 			else
 			{
-				if (dimension == 0){
-					dimension0 d0 = new dimension0(flag, numpoints);
-					for (int x = 0; x < numtrials; x++){
-						d0.populate(numpoints);
-						Prims p = new Prims(numpoints, d0.vertexList);
-						mstTrials[x] = p.doPrims();
-					}				
-				}
-				else{
-					dimensionOther dOther = new dimensionOther(flag, numpoints, dimension);
-					for (int x = 0; x < numtrials; x++){
-						dOther.populate(numpoints, dimension);
-						dOther.populateVertexList(numpoints);
-						Prims p2 = new Prims(numpoints, dOther.vertexList);
-						mstTrials[x] = p2.doPrims();
-					}
-				}
-				for(int z=0; z<mstTrials.length; z++)
+				for(int x = 0; x <numtrials; x++)
 				{
-					sum += mstTrials[z];
+					Prims p = new Prims(numpoints, dimension);
+					tempResult = p.doPrims();
+					//System.out.println(tempResult);
+					sum += tempResult;
 				}
-				result = sum/(mstTrials.length);
+				result = sum/numtrials;
 			}
 			System.out.println(result + " " + numpoints + " " + numtrials + " " + dimension);
 		}
 		//Test Case 1
-		else if(flag == 1){
-			ArrayList<Double> values = new ArrayList<Double>();
-			values.add(.7);
-			values.add(.3);
-			values.add(.5);
-			test t = new test(values);
-			double value = t.run(3);
-			if(value == .8){
-				System.out.println("true");
-			}
-			else{
-				System.out.println("false");
-			}
+		/*else if(flag == 1){
+			Prims p1 = new Prims(3, 0);
+			double result1 = p1.doPrim();
+
 
 		}
 		else if (flag == 2){
@@ -94,6 +72,6 @@ public class main
 			else{
 				System.out.println("false");
 			}
-		}
+		}*/
 	}
 }
