@@ -87,7 +87,7 @@ public class Prims
 					if(r < dist[i]) {
 						dist[i] = r;
 					}
-					if (dist[i] < dist[w]) {
+					if ((dist[i] < dist[w]) || (v == w)) {
 						w = i;
 					}
 				}
