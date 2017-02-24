@@ -20,7 +20,7 @@ public class main
 				{
 					Prims p = new Prims(numpoints, dimension);
 					tempResult = p.doPrims();
-					System.out.println(tempResult);
+					//System.out.println(tempResult);
 					sum += tempResult;
 				}
 				result = sum/numtrials;

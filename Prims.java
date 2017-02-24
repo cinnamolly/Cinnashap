@@ -50,7 +50,7 @@ public class Prims
 				
 			}
 		}
-		System.out.println("x: ");
+		/*System.out.println("x: ");
 		for (int i = 0; i < numpoints; i++){
 			System.out.print(x[i] + ",");
 		}
@@ -58,7 +58,7 @@ public class Prims
 		for (int i = 0; i < numpoints; i++){
 			System.out.print(y[i] + ",");
 		}
-		System.out.println("\n");
+		System.out.println("\n");*/
 	}
 
 	public double doPrims(){
@@ -76,12 +76,12 @@ public class Prims
 					if(dimension == 0) {
 						r = random.random();
 						//storedWeights.add(r);
-						System.out.println("random edge: " + r);
+						//System.out.println("random edge: " + r);
 					}
 					else {
 						r = calcDist(v, i, dimension);
 						//storedWeights.add(r);
-						System.out.println("distance from " + v + " to " + i +"=" + r);
+						//System.out.println("distance from " + v + " to " + i +"=" + r);
 					}
 		
 					if(r < dist[i]) {
@@ -101,15 +101,15 @@ public class Prims
 		for(int i = 0; i < numpoints; i++) {
 			mst_sum += dist[i];
 
-			System.out.println("edge weight: " + dist[i]);
+			//System.out.println("edge weight: " + dist[i]);
 			
 			if (dist[i] > max_weight) {
 				max_weight = dist[i];
 			}
 		}
 
-		System.out.println("Largest edge: " + max_weight);
-		System.out.println(mst_sum);
+		//System.out.println("Largest edge: " + max_weight);
+		//System.out.println(mst_sum);
 		return mst_sum;
 
 	}
