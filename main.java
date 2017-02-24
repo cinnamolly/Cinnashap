@@ -10,81 +10,28 @@ public class main
 		double sum = 0;
 		double result = 0;
 		double tempResult = 0;
-		if(flag ==0){
-			if(numpoints == 1){
-				result = 0;
-			}
-			else
+		if(numpoints == 1){
+			result = 0;
+		}
+		else
+		{
+			for(int x = 0; x <numtrials; x++)
 			{
-				for(int x = 0; x <numtrials; x++)
-				{
-					Prims p = new Prims(numpoints, dimension);
-					sum += p.doPrims();
-				}
-				result = sum/numtrials;
+				Prims p = new Prims(numpoints, dimension, flag);
+				sum += p.doPrims();
 			}
-			System.out.println(result + " " + numpoints + " " + numtrials + " " + dimension);
+			result = sum/numtrials;
 		}
-		/*else if(flag == 1){
-			Prims p1 = new Prims(3, 0);
-			double result1 = p1.doPrims();
-			double min1 = Integer.MAX_VALUE;
-			double min2 = Integer.MAX_VALUE;
-			for(int x = 0; x<storedWeights.size(); x++){
-				double curr = storedWeights.get(x);
-				if (curr<min1 && curr < min2){
-					min1 = curr;
-				}
-				else if (curr > min1 && curr < min2)
-				{
-					min2 = curr;
-				}
-			}
-			if ((min1 + min2) == result1){
-				System.out.println("true");
-			}
-			else{
-				System.out.println("false");
-			}
-
-		}/*
+		System.out.println(result + " " + numpoints + " " + numtrials + " " + dimension);
+		if (flag ==1){
+			result = Math.round(result*100.0)/100.0;
+			if(result == .6)
+				System.out.println("Test 1: True");
+		}
 		else if (flag == 2){
-			ArrayList<Double> values = new ArrayList<Double>();
-			values.add(.9);
-			values.add(.6);
-			values.add(.4);
-			values.add(.2);
-			values.add(.7);
-			values.add(.8);
-			test t = new test(values);
-			double value = t.run(4);
-			if(value == 1.2){
-				System.out.println("true");
-			}
-			else{
-				System.out.println("false");
-			}
+			result = Math.round(result*100.0)/100.0;
+			if(result == 1.2)
+				System.out.println("Test 2: True");
 		}
-		else if (flag == 3){
-			ArrayList<Double> values = new ArrayList<Double>();
-			values.add(.9);
-			values.add(.6);
-			values.add(.4);
-			values.add(.2);
-			values.add(.7);
-			values.add(.1);
-			values.add(.3);
-			values.add(.5);
-			values.add(.4);
-			values.add(.9);
-			test t = new test(values);
-			double value = t.run(5);
-			if(value == 1.0){
-				System.out.println("true");
-			}
-			else{
-				System.out.println("false");
-			}
-		}*/
 	}
 }

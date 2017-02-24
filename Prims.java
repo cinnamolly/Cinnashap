@@ -7,15 +7,18 @@ public class Prims
 	double r = 0;
 	double[] dist;
 	int[] set;
-	//List<Double> storedWeights;
-
+	int flag;
+	int flagCounter;
 	double[] x, y, z, w;
+	double[] flag1;
+	double[] flag2;
 
-	public Prims(int numpoints, int dimension)
+
+	public Prims(int numpoints, int dimension, int flag)
 	{
 		this.numpoints = numpoints;
 		this.dimension = dimension;
-
+		this.flag = flag;
 		random = new randomGen();
 
 		dist = new double[numpoints];
@@ -24,6 +27,9 @@ public class Prims
 		y = new double[numpoints];
 		z = new double[numpoints];
 		w = new double[numpoints];
+		flag1 = new double[]{.2,.6,.4};
+		flag2 = new double[]{.4, .8, .9, .2, .1, .6};
+		flagCounter = 0;
 
 		// fill dist_list with MAX_INT
 		for (int i = 0; i < numpoints; i++) {
@@ -63,13 +69,21 @@ public class Prims
 		for(int j = 0; j < numpoints - 1; j++){
 			for(int i = 1; i < numpoints; i++) {
 				if((v != i) && (set[i] != 1)){
-					if(dimension == 0) {
+					if(dimension == 0 && flag==0) {
 						r = random.random();
 					}
-					else {
+					else if (dimension >1 && flag == 0) {
 						r = calcDist(v, i, dimension);
 					}
-		
+					else if(flag == 1){
+						r = flag1[flagCounter];
+						flagCounter++;
+					}
+					else if(flag == 2){
+						r = flag2[flagCounter];
+						flagCounter++;
+					}
+
 					if(r < dist[i]) {
 						dist[i] = r;
 					}
@@ -102,5 +116,4 @@ public class Prims
 		
 		return Math.sqrt(sum);
 	}
-
 }
