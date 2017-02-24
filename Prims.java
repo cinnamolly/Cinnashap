@@ -50,22 +50,12 @@ public class Prims
 				
 			}
 		}
-		/*System.out.println("x: ");
-		for (int i = 0; i < numpoints; i++){
-			System.out.print(x[i] + ",");
-		}
-		System.out.println("\n y: ");
-		for (int i = 0; i < numpoints; i++){
-			System.out.print(y[i] + ",");
-		}
-		System.out.println("\n");*/
 	}
 
 	public double doPrims(){
 		//put vertex 0 in the arrays
 		dist[0] = 0;
 		set[0] = 1;
-		//storedWeights = new ArrayList<Double>();
 		//iterate through distance list, generate new distances, compare
 		//v is current vertex and w is closest node to MST so far
 		int v = 0;
@@ -75,13 +65,9 @@ public class Prims
 				if((v != i) && (set[i] != 1)){
 					if(dimension == 0) {
 						r = random.random();
-						//storedWeights.add(r);
-						//System.out.println("random edge: " + r);
 					}
 					else {
 						r = calcDist(v, i, dimension);
-						//storedWeights.add(r);
-						//System.out.println("distance from " + v + " to " + i +"=" + r);
 					}
 		
 					if(r < dist[i]) {
@@ -95,21 +81,10 @@ public class Prims
 			set[w] = 1;
 			v = w;
 		}
-
-		double max_weight = 0;
 		double mst_sum = 0;
 		for(int i = 0; i < numpoints; i++) {
 			mst_sum += dist[i];
-
-			//System.out.println("edge weight: " + dist[i]);
-			
-			if (dist[i] > max_weight) {
-				max_weight = dist[i];
-			}
 		}
-
-		//System.out.println("Largest edge: " + max_weight);
-		//System.out.println(mst_sum);
 		return mst_sum;
 
 	}

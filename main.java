@@ -19,9 +19,7 @@ public class main
 				for(int x = 0; x <numtrials; x++)
 				{
 					Prims p = new Prims(numpoints, dimension);
-					tempResult = p.doPrims();
-					//System.out.println(tempResult);
-					sum += tempResult;
+					sum += p.doPrims();
 				}
 				result = sum/numtrials;
 			}
