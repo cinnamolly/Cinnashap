@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class main
+public class randmst
 {
 	public static void main(String[] args){
 		int flag = Integer.parseInt(args[0]);
@@ -32,6 +32,10 @@ public class main
 			result = Math.round(result*100.0)/100.0;
 			if(result == 1.2)
 				System.out.println("Test 2: True");
+		}
+		else if (flag == 3){
+			if(result == 0.67993783695076)
+				System.out.println("Test 3: True");
 		}
 	}
 }

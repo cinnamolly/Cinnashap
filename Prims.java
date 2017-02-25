@@ -66,13 +66,17 @@ public class Prims
 		//v is current vertex and w is closest node to MST so far
 		int v = 0;
 		int w = 1;
+		if(flag ==3){
+			x = new double[]{.2, .3, .4};
+			y = new double[]{.1, .7, .6};
+			}
 		for(int j = 0; j < numpoints - 1; j++){
 			for(int i = 1; i < numpoints; i++) {
 				if((v != i) && (set[i] != 1)){
 					if(dimension == 0 && flag==0) {
 						r = random.random();
 					}
-					else if (dimension >1 && flag == 0) {
+					else if (dimension >1 && flag == 0 || flag == 3) {
 						r = calcDist(v, i, dimension);
 					}
 					else if(flag == 1){
@@ -83,6 +87,7 @@ public class Prims
 						r = flag2[flagCounter];
 						flagCounter++;
 					}
+					
 
 					if(r < dist[i]) {
 						dist[i] = r;
